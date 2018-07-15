@@ -42,8 +42,13 @@ public class BitCoinWatchResource {
 	
 	public ResponseEntity<?> getAvarage(@RequestParam("minutes")String minutes) throws ParseException{
 		log.info("average calculation()");
+		if(Long.parseLong(minutes)<=0){
+			log.error("invalid input");
+			throw new MoneyTapError();
+		}
 		List<BitCoinRate> bitCoinRateList=bitCoinRequest.getBitCoinRates(Long.parseLong(minutes));
 		if(bitCoinRateList.isEmpty()){
+			log.error("Empty result");
 			throw new MoneyTapError();
 		}
 
@@ -62,8 +67,14 @@ public class BitCoinWatchResource {
 	
 	public ResponseEntity<?> getMedian(@RequestParam("minutes")String minutes) throws ParseException{
 		log.info("median calculation()");
+		if(Long.parseLong(minutes)<=0){
+			log.error("invalid input");
+			throw new MoneyTapError();
+		}
+
 		List<BitCoinRate> bitCoinRateList=bitCoinRequest.getBitCoinRates(Long.parseLong(minutes));
 		if(bitCoinRateList.isEmpty()){
+			log.error("Emppty result");
 			throw new MoneyTapError();
 		}
 		MedianPrice medianPrice=BitCoinUtil.getMedian(bitCoinRateList);
