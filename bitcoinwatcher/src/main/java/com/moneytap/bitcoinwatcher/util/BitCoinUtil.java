@@ -15,7 +15,7 @@ import com.moneytap.bitcoinwatcher.entity.BitCoinRate;
 
 public class BitCoinUtil {
 
-	@Loggable
+	
 	public static BitCoinRate mapBitCoin(BitCoinResponseMatcher response) {
 		BitCoinRate rate=new BitCoinRate();
 		rate.setInr(Double.parseDouble(response.getBpi().getINR().getRate_float()));
@@ -24,7 +24,11 @@ public class BitCoinUtil {
 		return rate;
 	}
 
-	@Loggable
+	
+	/**
+	 * @param time UTC time in string format
+	 * @return LocalDateTime in yyyy-MM-dd HH:mm:00 format
+	 */
 	public static LocalDateTime convertStringToTimestamp(String time){
 		String inputTime=time.replace("T", " ");
 		String input1[]=inputTime.split("\\+");
@@ -81,6 +85,10 @@ public class BitCoinUtil {
 		return averagePrice;
 	}
 
+	/**
+	 * @param bitCoinRateList
+	 * @return median value from the list of Bincoin rates
+	 */
 	public static MedianPrice getMedian(List<BitCoinRate> bitCoinRateList) {
 	
 	

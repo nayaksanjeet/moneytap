@@ -22,19 +22,18 @@ public class BitCoinWatcherScheduler {
 	BitCoinStorageService bitCoinStorageService;
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	//60000 milliseconds --after each interval scheduler will run.
 	@Scheduled(fixedRate=60000)
-	@Loggable
+	
 	public void display(){
 		log.info("scheduler is running");
 		ResponseEntity<?> response=bitCoinDetailService.saveRecord();
 		BitCoinResponseMatcher responseMatcher=(BitCoinResponseMatcher)response.getBody();
 		//System.out.println(responseMatcher.getDisclaimer());
-		log.info(responseMatcher.getBpi().getUSD().getRate_float());
-		log.info(responseMatcher.getBpi().getINR().getRate_float());
+		log.info("USD rate="+responseMatcher.getBpi().getUSD().getRate_float());
+		log.info("INR rate="+responseMatcher.getBpi().getINR().getRate_float());
 		bitCoinStorageService.storeBitCoinDetails(responseMatcher);
-		
-		
-		
+
 	}
 
 }

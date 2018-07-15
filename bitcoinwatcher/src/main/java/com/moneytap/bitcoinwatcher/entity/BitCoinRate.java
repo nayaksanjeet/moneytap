@@ -14,6 +14,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * @author Sanjeet Nayak
+ *  BitCoinRate entity mapped with BitCoin_rate table
+ */
 @Entity
 @Table(name="bitcoin_rate")
 public class BitCoinRate implements Serializable{

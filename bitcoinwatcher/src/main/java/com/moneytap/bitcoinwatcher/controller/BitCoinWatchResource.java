@@ -33,6 +33,11 @@ public class BitCoinWatchResource {
 	@Autowired
 	BitCoinRateRepository bitCoinRepo;
 	
+	/**
+	 * @param minutes
+	 * @return Average price in USD as well as INR in json
+	 * @throws ParseException
+	 */
 	@GetMapping(value="/bitcoin/avarage")
 	
 	public ResponseEntity<?> getAvarage(@RequestParam("minutes")String minutes) throws ParseException{
@@ -48,6 +53,11 @@ public class BitCoinWatchResource {
 		
 	}
 	
+	/**
+	 * @param minutes
+	 * @return Medianprice in USD as well as MedianPrice in INR in json
+	 * @throws ParseException
+	 */
 	@GetMapping(value="/bitcoin/median")
 	
 	public ResponseEntity<?> getMedian(@RequestParam("minutes")String minutes) throws ParseException{

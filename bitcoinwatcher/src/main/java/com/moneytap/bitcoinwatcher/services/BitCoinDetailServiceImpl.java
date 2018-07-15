@@ -28,6 +28,10 @@ public class BitCoinDetailServiceImpl implements BitCoinDetailService {
 	@Autowired
 	Environment env;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	/* (non-Javadoc)
+	 * @see com.moneytap.bitcoinwatcher.services.BitCoinDetailService#saveRecord()
+	 * fetech record from the coindesk api using restTemplate
+	 */
 	@Override
 	public ResponseEntity<?> saveRecord(){
 		log.info("save Record()");

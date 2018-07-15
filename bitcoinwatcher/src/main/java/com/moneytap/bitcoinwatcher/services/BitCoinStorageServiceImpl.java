@@ -14,6 +14,10 @@ public class BitCoinStorageServiceImpl implements BitCoinStorageService{
 	@Autowired
 	BitCoinRateRepository bitCoinRepository;
 	
+	/* (non-Javadoc)
+	 * @see com.moneytap.bitcoinwatcher.services.BitCoinStorageService#storeBitCoinDetails(com.moneytap.bitcoinwatcher.dto.BitCoinResponseMatcher)
+	 * saves the bitCoin detail in the database fetched using coindesk api
+	 */
 	@Override
 	public BitCoinRate storeBitCoinDetails(BitCoinResponseMatcher response) {
 		BitCoinRate bitCoin=BitCoinUtil.mapBitCoin(response);

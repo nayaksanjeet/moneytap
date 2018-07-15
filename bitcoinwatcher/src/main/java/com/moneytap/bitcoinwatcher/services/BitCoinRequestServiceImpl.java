@@ -24,6 +24,10 @@ public class BitCoinRequestServiceImpl implements BitCoinRequestService {
 	BitCoinRateRepository bitCoinRateRepository;
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	/* (non-Javadoc)
+	 * @see com.moneytap.bitcoinwatcher.services.BitCoinRequestService#getBitCoinRates(java.lang.Long)
+	 * gets all the bitcoin details from currentUTC time to last given minute time
+	 */
 	@Override
 	public List<BitCoinRate> getBitCoinRates(Long minutes) {
 		log.info("getBitCoinRates()");
